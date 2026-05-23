@@ -2,6 +2,15 @@
 
 Modern React frontend for a visa, tours, and travel agency. It includes service sections, destination highlights, process flow, testimonials, and an inquiry form that can send leads to email through EmailJS.
 
+## Pages
+
+- `/` - white travel search homepage
+- `/services` - full services page
+- `/holidays` - holiday package cards
+- `/visa` - searchable visa assistance catalog for 180+ countries
+- `/about` - company positioning page
+- `/inquiry` - lead capture form
+
 ## Run Locally
 
 ```bash
@@ -16,6 +25,8 @@ npm run build
 ```
 
 Vercel will detect Vite automatically. The production output folder is `dist`.
+
+`vercel.json` includes a rewrite to `index.html` so direct page URLs such as `/visa` and `/services` work after deployment.
 
 ## Email Lead Setup
 
