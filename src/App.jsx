@@ -803,7 +803,7 @@ function InquiryForm() {
         <div className="contact-stack">
           <span>
             <Mail size={18} aria-hidden="true" />
-            {leadEmail}
+            hello@tripmytour.com
           </span>
           <span>
             <Headphones size={18} aria-hidden="true" />
