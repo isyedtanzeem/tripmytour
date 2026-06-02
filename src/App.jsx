@@ -28,6 +28,7 @@ import {
   WalletCards,
   X
 } from 'lucide-react';
+import tmytLogo from './assets/tmyt-svg-logo.svg';
 import { countryVisaPackages } from './data/visaCatalog.js';
 
 const emailServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -206,7 +207,7 @@ function Header({ currentPath, menuOpen, navigate, setMenuOpen }) {
     <header className="site-header">
       <button className="brand" type="button" onClick={() => navigate('/')} aria-label="TripMyTour home">
         <span className="brand-mark">
-          <Plane size={22} aria-hidden="true" />
+          <img src={tmytLogo} alt="" aria-hidden="true" />
         </span>
         <span>
           <strong>TripMyTour</strong>
@@ -973,7 +974,7 @@ function Footer({ navigate }) {
         <div>
           <button className="brand footer-brand" type="button" onClick={() => navigate('/')}>
             <span className="brand-mark">
-              <Plane size={22} aria-hidden="true" />
+              <img src={tmytLogo} alt="" aria-hidden="true" />
             </span>
             <span>
               <strong>TripMyTour</strong>
