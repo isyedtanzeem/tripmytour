@@ -33,7 +33,14 @@ import { countryVisaPackages } from './data/visaCatalog.js';
 const emailServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const emailTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const emailPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const leadEmail = import.meta.env.VITE_LEAD_EMAIL || 'leads@tripmytour.com';
+const companyContact = {
+  company: 'Trip My Tour India Pvt Ltd',
+  email: 'hello@tripmytour.com',
+  phones: ['9880371756', '7795541756', '9900025912'],
+  address:
+    "799, 15th Main Rd, next to Domino's Pizza, Mico Layout, BTM Layout 2nd Stage, BTM Layout, Bengaluru, Karnataka 560076"
+};
+const leadEmail = import.meta.env.VITE_LEAD_EMAIL || companyContact.email;
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -799,7 +806,15 @@ function InquiryForm() {
           </span>
           <span>
             <Headphones size={18} aria-hidden="true" />
-            Response target within 24 hours
+            {companyContact.phones.join(' / ')}
+          </span>
+          <span>
+            <Building2 size={18} aria-hidden="true" />
+            {companyContact.company}
+          </span>
+          <span>
+            <MapPin size={18} aria-hidden="true" />
+            {companyContact.address}
           </span>
         </div>
       </div>
@@ -966,6 +981,12 @@ function Footer({ navigate }) {
             </span>
           </button>
           <p>Visa support, holiday packages, flights, hotels, insurance and corporate travel services.</p>
+          <address className="footer-contact">
+            <span>{companyContact.company}</span>
+            <a href={`mailto:${companyContact.email}`}>{companyContact.email}</a>
+            <a href={`tel:${companyContact.phones[0]}`}>{companyContact.phones.join(' / ')}</a>
+            <span>{companyContact.address}</span>
+          </address>
         </div>
         <div className="footer-links">
           {navItems.map((item) => (

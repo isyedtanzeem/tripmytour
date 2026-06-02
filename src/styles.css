@@ -982,6 +982,27 @@ img {
   line-height: 1.6;
 }
 
+.footer-contact {
+  display: grid;
+  gap: 7px;
+  max-width: 620px;
+  margin-top: 16px;
+  color: #405166;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.footer-contact span:first-child {
+  color: var(--ink);
+  font-weight: 950;
+}
+
+.footer-contact a {
+  width: fit-content;
+  color: var(--blue);
+  font-weight: 850;
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
