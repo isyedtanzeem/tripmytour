@@ -491,8 +491,7 @@ function InquiryPage() {
     <>
       <PageHero
         kicker="Inquiry"
-        title="Capture complete travel requirements in one form."
-        text="Every form submission can be sent to your lead inbox through EmailJS after Vercel environment variables are added."
+        title="Complete travel requirements in one form."
       />
       <section className="section no-top-padding">
         <InquiryForm />
@@ -964,7 +963,6 @@ function InquiryForm() {
   return (
     <div className="page-wrap inquiry-grid">
       <div className="inquiry-aside">
-        <span className="eyebrow">Lead inbox</span>
         <h2>Send customer requirements to your travel desk.</h2>
         <p>
           The form captures service type, destination, month, budget and customer
