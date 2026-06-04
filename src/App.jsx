@@ -52,6 +52,13 @@ const navItems = [
   { label: 'Inquiry', path: '/inquiry' }
 ];
 
+const legalItems = [
+  { label: 'Privacy Policy', path: '/privacy-policy' },
+  { label: 'Terms and Conditions', path: '/terms-and-conditions' }
+];
+
+const quotePricingLabel = 'Request a quote';
+
 const initialInquiry = {
   fullName: '',
   email: '',
@@ -102,7 +109,7 @@ const holidayPackages = [
     name: 'Dubai Family Escape',
     place: 'Dubai, UAE',
     duration: '5 Nights / 6 Days',
-    price: 'INR 54,999',
+    price: quotePricingLabel,
     image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80',
     includes: ['Dubai visa assistance', '4-star hotel stay', 'Desert safari', 'Airport transfers']
   },
@@ -110,7 +117,7 @@ const holidayPackages = [
     name: 'Singapore City Break',
     place: 'Singapore',
     duration: '4 Nights / 5 Days',
-    price: 'INR 62,500',
+    price: quotePricingLabel,
     image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=80',
     includes: ['Visa guidance', 'Sentosa day plan', 'City tour', 'Hotel with breakfast']
   },
@@ -118,7 +125,7 @@ const holidayPackages = [
     name: 'Maldives Honeymoon',
     place: 'Maldives',
     duration: '4 Nights / 5 Days',
-    price: 'INR 89,999',
+    price: quotePricingLabel,
     image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=900&q=80',
     includes: ['Island resort', 'Speedboat transfer', 'Meal plan options', 'Honeymoon setup']
   },
@@ -126,7 +133,7 @@ const holidayPackages = [
     name: 'Europe Starter Tour',
     place: 'France, Switzerland, Italy',
     duration: '8 Nights / 9 Days',
-    price: 'INR 1,85,000',
+    price: quotePricingLabel,
     image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80',
     includes: ['Schengen file support', 'Multi-city itinerary', 'Hotels and trains', 'Travel insurance guidance']
   },
@@ -134,7 +141,7 @@ const holidayPackages = [
     name: 'Kashmir Scenic Holiday',
     place: 'Srinagar, Gulmarg, Pahalgam',
     duration: '5 Nights / 6 Days',
-    price: 'INR 28,999',
+    price: quotePricingLabel,
     image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80',
     includes: ['Houseboat option', 'Private cab', 'Local sightseeing', 'Family-friendly stay']
   },
@@ -142,7 +149,7 @@ const holidayPackages = [
     name: 'Thailand Beach Run',
     place: 'Phuket and Krabi',
     duration: '5 Nights / 6 Days',
-    price: 'INR 48,500',
+    price: quotePricingLabel,
     image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80',
     includes: ['Island tours', 'Hotel with breakfast', 'Transfers', 'Visa-on-arrival guidance']
   }
@@ -157,7 +164,7 @@ const processSteps = [
 
 function normalizePath(pathname) {
   if (!pathname || pathname === '/index.html') return '/';
-  return navItems.some((item) => item.path === pathname) ? pathname : '/';
+  return [...navItems, ...legalItems].some((item) => item.path === pathname) ? pathname : '/';
 }
 
 function App() {
@@ -185,7 +192,9 @@ function App() {
     '/holidays': <HolidaysPage navigate={navigate} />,
     '/visa': <VisaPage navigate={navigate} />,
     '/about': <AboutPage navigate={navigate} />,
-    '/inquiry': <InquiryPage />
+    '/inquiry': <InquiryPage />,
+    '/privacy-policy': <PrivacyPolicyPage />,
+    '/terms-and-conditions': <TermsAndConditionsPage />
   }[currentPath];
 
   return (
@@ -332,9 +341,9 @@ function HomePage({ navigate }) {
         <SectionHeading
           kicker="Trending holiday packages"
           title="Ready-to-sell packages with simple inquiry flow."
-          text="Use these as featured cards and update package pricing anytime before launch."
+          text="Use these as featured cards and share customized package quotes after a call."
         />
-        <HolidayGrid limit={3} />
+        <HolidayGrid limit={3} navigate={navigate} />
         <div className="center-action">
           <button className="secondary-button" type="button" onClick={() => navigate('/holidays')}>
             View all holiday packages
@@ -413,12 +422,12 @@ function HolidaysPage({ navigate }) {
       <PageHero
         kicker="Holiday packages"
         title="Domestic and international packages ready for customer inquiries."
-        text="Showcase curated package cards with inclusions, duration, starting price and visa notes."
+        text="Showcase curated package cards with inclusions, duration, tailored quote details and visa notes."
         actionLabel="Plan custom trip"
         onAction={() => navigate('/inquiry')}
       />
       <section className="section">
-        <HolidayGrid />
+        <HolidayGrid navigate={navigate} />
       </section>
     </>
   );
@@ -430,7 +439,7 @@ function VisaPage({ navigate }) {
       <PageHero
         kicker="Visa applications"
         title="Search visa support packages for 180+ countries."
-        text="Customers can find indicative assistance fees, timelines, visa types and document checklists before submitting an inquiry."
+        text="Customers can review timelines, visa types and document checklists before calling for the final price."
         actionLabel="Send visa inquiry"
         onAction={() => navigate('/inquiry')}
       />
@@ -492,6 +501,152 @@ function InquiryPage() {
   );
 }
 
+function PrivacyPolicyPage() {
+  return (
+    <>
+      <PageHero
+        kicker="Privacy Policy"
+        title="How TripMyTour handles customer and travel inquiry data."
+        text="Last updated: June 4, 2026"
+      />
+      <LegalContent
+        intro="This Privacy Policy explains how Trip My Tour India Pvt Ltd collects, uses and protects information shared through this website, inquiry forms, phone calls, email and travel-service conversations."
+        sections={[
+          {
+            title: 'Information we collect',
+            points: [
+              'Contact details such as name, email address, phone number and address when voluntarily shared.',
+              'Travel inquiry details such as destination, travel month, number of travelers, budget, service category and messages.',
+              'Visa and booking documents shared by customers through approved communication channels when required for a service.',
+              'Basic website usage information that helps us keep the website reliable and improve customer experience.'
+            ]
+          },
+          {
+            title: 'How we use information',
+            points: [
+              'To respond to inquiries and prepare visa, holiday, hotel, flight, insurance or corporate travel proposals.',
+              'To review travel requirements, prepare document checklists and coordinate booking or visa support steps.',
+              'To contact customers about pending documents, quotes, appointments, payment updates and service handover.',
+              'To maintain internal records, improve service quality and meet legal or regulatory obligations.'
+            ]
+          },
+          {
+            title: 'Sharing information',
+            points: [
+              'We may share relevant information with embassies, consulates, visa centers, airlines, hotels, insurers, destination partners, payment providers and technology vendors only as needed to provide requested services.',
+              'We may disclose information if required by law, regulation, court order or a lawful government request.',
+              'We do not sell customer personal information.'
+            ]
+          },
+          {
+            title: 'Data security and retention',
+            points: [
+              'We use reasonable administrative and technical safeguards to protect customer information.',
+              'Travel and visa documents are retained only as long as needed for the service, business records, dispute handling or legal requirements.',
+              'Customers should avoid sending sensitive documents unless requested by the TripMyTour team for a confirmed service.'
+            ]
+          },
+          {
+            title: 'Customer choices',
+            points: [
+              'Customers may request access, correction or deletion of personal information, subject to legal and service-record requirements.',
+              'Marketing or follow-up communication preferences can be updated by contacting the travel desk.',
+              `Privacy requests can be sent to ${companyContact.email}.`
+            ]
+          }
+        ]}
+      />
+    </>
+  );
+}
+
+function TermsAndConditionsPage() {
+  return (
+    <>
+      <PageHero
+        kicker="Terms and Conditions"
+        title="Terms for using TripMyTour travel and visa services."
+        text="Last updated: June 4, 2026"
+      />
+      <LegalContent
+        intro="These Terms and Conditions apply to this website and to services requested from Trip My Tour India Pvt Ltd. By using the website or submitting an inquiry, you agree to these terms."
+        sections={[
+          {
+            title: 'Service scope',
+            points: [
+              'TripMyTour provides travel planning, visa file support, holiday packages, hotels, flights, insurance guidance, transfers and corporate travel coordination.',
+              'Visa support services include guidance and file assistance only. Final visa decisions are made solely by the relevant embassy, consulate, visa center or immigration authority.',
+              'Travel requirements, appointment availability and destination rules may change without notice.'
+            ]
+          },
+          {
+            title: 'Pricing and quotes',
+            points: [
+              'Website pricing is shared by tailored quote. Final quotes are prepared after reviewing destination, travel dates, traveler count, visa category, availability and customer requirements.',
+              'A quote is valid only for the period stated by the TripMyTour team and may change due to airline, hotel, embassy, currency, tax or supplier updates.',
+              'Government fees, embassy charges, insurance premiums and third-party costs may be billed separately where applicable.'
+            ]
+          },
+          {
+            title: 'Customer responsibilities',
+            points: [
+              'Customers must provide accurate personal, passport, travel and document information.',
+              'Customers are responsible for checking passport validity, immigration history, financial proofs and destination eligibility before submission.',
+              'Delays caused by incomplete, inaccurate or late documents are outside TripMyTour control.'
+            ]
+          },
+          {
+            title: 'Bookings, payments and cancellations',
+            points: [
+              'Bookings are confirmed only after payment and written confirmation from the TripMyTour team.',
+              'Cancellation, refund and rescheduling terms depend on the airline, hotel, embassy, insurer, destination partner or other supplier involved.',
+              'Some service fees, visa fees, appointment fees and supplier charges may be non-refundable after processing begins.'
+            ]
+          },
+          {
+            title: 'Liability and third parties',
+            points: [
+              'TripMyTour is not responsible for embassy refusal, immigration decisions, border-entry denial, airline schedule changes, supplier cancellations, weather events, force majeure or customer document issues.',
+              'Third-party services are subject to the terms, timelines and availability of the relevant provider.',
+              'The website content is for general guidance and should be confirmed with the TripMyTour team before booking or submission.'
+            ]
+          },
+          {
+            title: 'Contact',
+            points: [
+              `${companyContact.company}`,
+              companyContact.address,
+              `${companyContact.email} | ${companyContact.phones.join(' / ')}`
+            ]
+          }
+        ]}
+      />
+    </>
+  );
+}
+
+function LegalContent({ intro, sections }) {
+  return (
+    <section className="section no-top-padding">
+      <div className="page-wrap legal-layout">
+        <p className="legal-intro">{intro}</p>
+        <div className="legal-card">
+          {sections.map((section) => (
+            <section className="legal-section" key={section.title}>
+              <h2>{section.title}</h2>
+              <ul>
+                {section.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PageHero({ kicker, title, text, actionLabel, onAction }) {
   return (
     <section className="page-hero">
@@ -539,7 +694,7 @@ function ServiceGrid() {
   );
 }
 
-function HolidayGrid({ limit }) {
+function HolidayGrid({ limit, navigate }) {
   const packages = limit ? holidayPackages.slice(0, limit) : holidayPackages;
 
   return (
@@ -563,8 +718,10 @@ function HolidayGrid({ limit }) {
               ))}
             </ul>
             <div className="card-footer">
-              <strong>{item.price}</strong>
-              <small>per person from</small>
+              <button className="quote-action" type="button" onClick={() => navigate('/inquiry')}>
+                {item.price}
+              </button>
+              <small>tailored pricing</small>
             </div>
           </div>
         </article>
@@ -627,8 +784,8 @@ function VisaExplorer({ compact = false, navigate }) {
         </div>
         <div className="visa-note">
           <ShieldCheck size={17} aria-hidden="true" />
-          Indicative service fees and document lists. Embassy fees, rules and appointment
-          availability must be verified for the final file.
+          Quotes are tailored after reviewing destination, visa type, embassy fees,
+          rules and appointment availability for the final file.
         </div>
       </div>
 
@@ -639,18 +796,20 @@ function VisaExplorer({ compact = false, navigate }) {
             <span>country packages found</span>
           </div>
           {visibleCountries.map((item) => (
-            <button
+            <div
               className={selectedPackage.country === item.country ? 'visa-row active' : 'visa-row'}
               key={item.country}
-              type="button"
-              onClick={() => selectPackage(item.country)}
             >
-              <span>
-                <strong>{item.country}</strong>
-                <small>{item.region} - {item.visaType}</small>
-              </span>
-              <em>{item.serviceFee}</em>
-            </button>
+              <button className="visa-row-main" type="button" onClick={() => selectPackage(item.country)}>
+                <span>
+                  <strong>{item.country}</strong>
+                  <small>{item.region} - {item.visaType}</small>
+                </span>
+              </button>
+              <button className="quote-action visa-quote-action" type="button" onClick={() => navigate('/inquiry')}>
+                {item.serviceFee}
+              </button>
+            </div>
           ))}
           {compact && (
             <button className="view-all-row" type="button" onClick={() => navigate('/visa')}>
@@ -660,13 +819,13 @@ function VisaExplorer({ compact = false, navigate }) {
           )}
         </div>
 
-        {!compact && <VisaDetailsCard item={selectedPackage} />}
+        {!compact && <VisaDetailsCard item={selectedPackage} navigate={navigate} />}
       </div>
     </div>
   );
 }
 
-function VisaDetailsCard({ item }) {
+function VisaDetailsCard({ item, navigate }) {
   return (
     <aside className="visa-detail-card">
       <div className="detail-header">
@@ -678,7 +837,12 @@ function VisaDetailsCard({ item }) {
       </div>
 
       <div className="detail-grid">
-        <DetailItem icon={WalletCards} label="Service fee from" value={item.serviceFee} />
+        <DetailItem
+          icon={WalletCards}
+          label="Pricing"
+          value={item.serviceFee}
+          onAction={() => navigate('/inquiry')}
+        />
         <DetailItem icon={Clock3} label="Processing estimate" value={item.processingTime} />
         <DetailItem icon={FileText} label="Visa type" value={item.visaType} />
         <DetailItem icon={CalendarDays} label="Typical stay" value={item.typicalStay} />
@@ -707,12 +871,18 @@ function VisaDetailsCard({ item }) {
   );
 }
 
-function DetailItem({ icon: Icon, label, value }) {
+function DetailItem({ icon: Icon, label, value, onAction }) {
   return (
     <div className="detail-item">
       <Icon size={18} aria-hidden="true" />
       <span>{label}</span>
-      <strong>{value}</strong>
+      {onAction ? (
+        <button className="quote-action detail-quote-action" type="button" onClick={onAction}>
+          {value}
+        </button>
+      ) : (
+        <strong>{value}</strong>
+      )}
     </div>
   );
 }
@@ -991,6 +1161,18 @@ function Footer({ navigate }) {
         </div>
         <div className="footer-links">
           {navItems.map((item) => (
+            <a
+              href={item.path}
+              key={item.path}
+              onClick={(event) => {
+                event.preventDefault();
+                navigate(item.path);
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+          {legalItems.map((item) => (
             <a
               href={item.path}
               key={item.path}

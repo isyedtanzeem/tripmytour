@@ -302,6 +302,8 @@ const supportIncludes = [
   'Status follow-up checklist for the customer'
 ];
 
+const quotePricingLabel = 'Request a quote';
+
 const countryAliases = {
   Australia: ['Sydney', 'Melbourne'],
   Canada: ['Toronto', 'Vancouver'],
@@ -321,7 +323,7 @@ function getVisaProfile(country, region) {
   if (schengenCountries.has(country)) {
     return {
       visaType: 'Schengen short-stay tourist visa',
-      serviceFee: 'INR 7,499',
+      serviceFee: quotePricingLabel,
       processingTime: '15-25 working days',
       typicalStay: 'Up to 90 days',
       documents: schengenDocuments
@@ -331,7 +333,7 @@ function getVisaProfile(country, region) {
   if (country === 'United States' || country === 'Canada') {
     return {
       visaType: 'Visitor visa appointment support',
-      serviceFee: 'INR 12,999',
+      serviceFee: quotePricingLabel,
       processingTime: 'Appointment based',
       typicalStay: 'As granted by officer',
       documents: northAmericaDocuments
@@ -341,7 +343,7 @@ function getVisaProfile(country, region) {
   if (country === 'United Kingdom' || country === 'Ireland') {
     return {
       visaType: 'Standard visitor visa support',
-      serviceFee: 'INR 9,999',
+      serviceFee: quotePricingLabel,
       processingTime: '15-30 working days',
       typicalStay: 'Up to 6 months',
       documents: embassyDocuments
@@ -351,7 +353,7 @@ function getVisaProfile(country, region) {
   if (country === 'Australia' || country === 'New Zealand') {
     return {
       visaType: 'Online visitor visa support',
-      serviceFee: 'INR 10,999',
+      serviceFee: quotePricingLabel,
       processingTime: '20-35 working days',
       typicalStay: 'As per visa grant',
       documents: embassyDocuments
@@ -361,7 +363,7 @@ function getVisaProfile(country, region) {
   if (gccCountries.has(country)) {
     return {
       visaType: 'Tourist eVisa / entry permit support',
-      serviceFee: 'INR 3,499',
+      serviceFee: quotePricingLabel,
       processingTime: '3-7 working days',
       typicalStay: '14-60 days',
       documents: [
@@ -377,7 +379,7 @@ function getVisaProfile(country, region) {
   if (fastEVisaCountries.has(country)) {
     return {
       visaType: 'Tourist eVisa assistance',
-      serviceFee: 'INR 2,499',
+      serviceFee: quotePricingLabel,
       processingTime: '3-10 working days',
       typicalStay: '15-90 days',
       documents: [
@@ -393,7 +395,7 @@ function getVisaProfile(country, region) {
   if (region === 'Europe') {
     return {
       visaType: 'Embassy tourist visa support',
-      serviceFee: 'INR 6,999',
+      serviceFee: quotePricingLabel,
       processingTime: '15-30 working days',
       typicalStay: 'As per embassy approval',
       documents: embassyDocuments
@@ -403,7 +405,7 @@ function getVisaProfile(country, region) {
   if (region === 'Americas') {
     return {
       visaType: 'Visitor visa documentation support',
-      serviceFee: 'INR 8,499',
+      serviceFee: quotePricingLabel,
       processingTime: '15-45 working days',
       typicalStay: 'As per visa grant',
       documents: embassyDocuments
@@ -413,7 +415,7 @@ function getVisaProfile(country, region) {
   if (region === 'Africa') {
     return {
       visaType: 'Tourist visa / eVisa support',
-      serviceFee: 'INR 4,999',
+      serviceFee: quotePricingLabel,
       processingTime: '7-20 working days',
       typicalStay: '30-90 days',
       documents: embassyDocuments
@@ -423,7 +425,7 @@ function getVisaProfile(country, region) {
   if (region === 'Oceania') {
     return {
       visaType: 'Visitor visa / entry permit support',
-      serviceFee: 'INR 5,999',
+      serviceFee: quotePricingLabel,
       processingTime: '10-25 working days',
       typicalStay: '30-90 days',
       documents: embassyDocuments
@@ -432,7 +434,7 @@ function getVisaProfile(country, region) {
 
   return {
     visaType: 'Tourist visa support',
-    serviceFee: 'INR 4,999',
+    serviceFee: quotePricingLabel,
     processingTime: '7-21 working days',
     typicalStay: '30-90 days',
     documents: embassyDocuments

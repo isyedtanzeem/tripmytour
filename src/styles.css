@@ -96,8 +96,8 @@ img {
 
 .brand-mark {
   display: grid;
-  width: 118px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   place-items: center;
   overflow: hidden;
 }
@@ -541,8 +541,30 @@ img {
   border-top: 1px solid var(--line);
 }
 
-.card-footer strong {
+.quote-action {
+  padding: 0;
   color: var(--orange);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  font-weight: 950;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+}
+
+.quote-action:hover {
+  color: #d95020;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.quote-action:focus-visible {
+  outline: 3px solid rgba(21, 101, 216, 0.24);
+  outline-offset: 4px;
+}
+
+.card-footer .quote-action {
   font-size: 1.28rem;
 }
 
@@ -583,6 +605,71 @@ img {
   color: var(--orange);
   font-weight: 950;
   letter-spacing: 0.1em;
+}
+
+.legal-layout {
+  display: grid;
+  gap: 22px;
+}
+
+.legal-intro {
+  max-width: 900px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.72;
+}
+
+.legal-card {
+  display: grid;
+  gap: 0;
+  max-width: 960px;
+  padding: 8px 28px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 14px 40px rgba(21, 32, 43, 0.06);
+}
+
+.legal-section {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-section:last-child {
+  border-bottom: 0;
+}
+
+.legal-section h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.35rem;
+}
+
+.legal-section ul {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+}
+
+.legal-section li {
+  position: relative;
+  padding-left: 20px;
+  color: #405166;
+  line-height: 1.62;
+}
+
+.legal-section li::before {
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  content: "";
+  background: var(--blue);
+  border-radius: 50%;
 }
 
 .about-grid {
@@ -725,13 +812,31 @@ img {
   background: #ffffff;
   border: 1px solid transparent;
   border-radius: 8px;
+}
+
+.visa-row-main {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
   cursor: pointer;
+}
+
+.visa-row-main span {
+  min-width: 0;
 }
 
 .visa-row.active,
 .visa-row:hover {
   border-color: #b9d8ff;
   box-shadow: 0 10px 28px rgba(21, 101, 216, 0.1);
+}
+
+.visa-row-main:hover strong {
+  color: var(--blue);
 }
 
 .visa-row strong,
@@ -749,10 +854,8 @@ img {
   line-height: 1.35;
 }
 
-.visa-row em {
-  color: var(--orange);
-  font-style: normal;
-  font-weight: 950;
+.visa-quote-action {
+  flex: 0 0 auto;
   white-space: nowrap;
 }
 
@@ -824,6 +927,10 @@ img {
 .detail-item strong {
   color: var(--ink);
   line-height: 1.35;
+}
+
+.detail-quote-action {
+  justify-self: start;
 }
 
 .visa-detail-card h4 {
@@ -1078,8 +1185,8 @@ img {
   }
 
   .brand-mark {
-    width: 96px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
   }
 
   .brand small {
@@ -1138,6 +1245,7 @@ img {
   .holiday-body,
   .process-card,
   .about-card,
+  .legal-card,
   .visa-detail-card,
   .inquiry-form {
     padding: 22px;
@@ -1148,7 +1256,7 @@ img {
     flex-direction: column;
   }
 
-  .visa-row em {
+  .visa-quote-action {
     white-space: normal;
   }
 
