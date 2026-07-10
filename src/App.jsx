@@ -219,8 +219,7 @@ function Header({ currentPath, menuOpen, navigate, setMenuOpen }) {
           <img src={tmytLogo} alt="" aria-hidden="true" />
         </span>
         <span>
-          <strong>TripMyTour</strong>
-          <small>Visa and travel desk</small>
+          <strong>Trip My Tour</strong>
         </span>
       </button>
 
@@ -1145,8 +1144,7 @@ function Footer({ navigate }) {
               <img src={tmytLogo} alt="" aria-hidden="true" />
             </span>
             <span>
-              <strong>TripMyTour</strong>
-              <small>Visa and travel desk</small>
+              <strong>Trip My Tour</strong>
             </span>
           </button>
           <p>Visa support, holiday packages, flights, hotels, insurance and corporate travel services.</p>
